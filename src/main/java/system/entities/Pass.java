@@ -6,12 +6,11 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
-import java.sql.Date;
 
 @Entity
-@Table(name = "workout", schema = "")
-public class Workout {
-
+@Table(name = "pass", schema = "")
+public class Pass
+{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
@@ -28,17 +27,10 @@ public class Workout {
     @Column(name = "remain", nullable = false)
     private int remain;
 
-    //Колонка времени и дат
-
     @ManyToOne
     @JoinColumn(name = "type_id", nullable = false)
     @JsonIgnore
     private WorkoutType type;
-
-    @ManyToOne
-    @JoinColumn(name = "trainer_id", nullable = false)
-    @JsonIgnore
-    private User trainer;
 
     public int getId() {
         return id;
@@ -46,14 +38,6 @@ public class Workout {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getRemain() {
-        return remain;
-    }
-
-    public void setRemain(int remain) {
-        this.remain = remain;
     }
 
     public String getName() {
@@ -80,6 +64,14 @@ public class Workout {
         this.description = description;
     }
 
+    public int getRemain() {
+        return remain;
+    }
+
+    public void setRemain(int remain) {
+        this.remain = remain;
+    }
+
     public WorkoutType getType() {
         return type;
     }
@@ -87,26 +79,4 @@ public class Workout {
     public void setType(WorkoutType type) {
         this.type = type;
     }
-
-    public User getTrainer() {
-        return trainer;
-    }
-
-    public void setTrainer(User trainer) {
-        this.trainer = trainer;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Workout workout = (Workout) o;
-        return id == workout.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-
 }

@@ -8,7 +8,7 @@ import java.util.List;
 @Repository
 public class WorkoutDao extends GenericDao<Workout>
 {
-    public List<Workout> getAllFoods() {
+    public List<Workout> getAllWorkout() {
         return getAll("Workout");
     }
 
@@ -20,11 +20,11 @@ public class WorkoutDao extends GenericDao<Workout>
         save(workout);
     }
 
-    public List<Workout> getAllWorkouts(String name) {
+    public List<Workout> getWorkoutByName(String name) {
         return getList("from Workouts where name=:n", name);
     }
 
-    public void deleteFood(Workout workout) {
+    public void deleteWorkout(Workout workout) {
         delete(workout);
     }
 }

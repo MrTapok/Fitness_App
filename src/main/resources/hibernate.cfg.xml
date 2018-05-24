@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.connection.url"> *юрл базы данных* </property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.characterEncoding">utf8</property>
+
+        <property name="hibernate.connection.username">    *юзернейм*     </property>
+        <property name="hibernate.connection.password"> *пароль* </property>
+
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.show_sql">true</property>
+
+        <mapping class="system.entities.User"/>
+        <mapping class="system.entities.Workout"/>
+        <mapping class="system.entities.WorkoutType"/>
+        <mapping class="system.entities.Pass"/>
+
+    </session-factory>
+</hibernate-configuration>
+
+        <!--<property name="hibernate.connection.username">root</property>-->
+        <!--<property name="hibernate.connection.password">root</property>-->

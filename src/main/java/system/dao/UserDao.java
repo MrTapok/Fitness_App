@@ -29,9 +29,11 @@ public class UserDao extends GenericDao<User>
         update(user);
     }
 
-    public List<User> getUsers(String name){
+    public List<User> getUserByName(String name){
         return getList("from User where name=:n", name);
     }
+
+    public List<User> getUsersByRole(String name){ return getList("from User where name=:n", name); }
 
     public void deleteUser(User user){
         delete(user);

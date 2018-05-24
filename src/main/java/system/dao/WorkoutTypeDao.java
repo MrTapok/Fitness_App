@@ -21,7 +21,7 @@ public class WorkoutTypeDao extends GenericDao<WorkoutType>
         save(type);
     }
 
-    public List<WorkoutType> getTypes(String name){
+    public List<WorkoutType> getTypeByName(String name){
         return getList("from Type where name=:n", name);
     }
 

@@ -23,16 +23,48 @@ public class User {
     @Column(name = "role", nullable = false)
     private String role;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @Column(name = "rating")
+    private int rating;
+
+    @Column(name = "vote")
+    private int vote;
+
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "user_workout",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "workout_id") }
+    )
     @JsonIgnore
     private List<Workout> workouts;
+
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "user_pass",
+            joinColumns = { @JoinColumn(name = "userp_id") },
+            inverseJoinColumns = { @JoinColumn(name = "pass_id") }
+    )
+    @JsonIgnore
+    private List<Pass> passes;
 
     public List<Workout> getWorkouts() {
         return workouts;
     }
 
+    public List<Pass> getPasses() {
+        return passes;
+    }
+
     public void setWorkouts(List<Workout> cart) {
         this.workouts = cart;
+    }
+
+    public int getVote() {
+        return vote;
+    }
+
+    public void setVote(int vote) {
+        this.vote = vote;
     }
 
     public int getId() {
@@ -41,6 +73,14 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
     public String getName() {
