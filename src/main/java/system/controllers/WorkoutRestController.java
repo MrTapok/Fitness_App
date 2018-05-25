@@ -64,6 +64,16 @@ public class WorkoutRestController
         return workoutService.getTrainers();
     }
 
+    @RequestMapping(value = "/getAllManagers", method = RequestMethod.GET)
+    public List<User> getManagers(){
+        return workoutService.getManagers();
+    }
+
+    @RequestMapping(value = "/getAllTrainers", method = RequestMethod.GET)
+    public List<User> getAdmins(){
+        return workoutService.getAdmins();
+    }
+
     @RequestMapping(value = "/getAllWorkouts", method = RequestMethod.GET)
     public List<User> getWorkouts(){
         return workoutService.getAllWorkouts();
@@ -108,8 +118,4 @@ public class WorkoutRestController
     public void addPass(@RequestBody Pass pass){
         workoutService.addPass(pass);
     }
-
-
-    //work in progress
-
 }

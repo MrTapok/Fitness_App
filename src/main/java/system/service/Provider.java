@@ -29,7 +29,8 @@ public class Provider implements AuthenticationProvider
     public Authentication authenticate(Authentication authentication) throws AuthenticationException
     {
         String login = authentication.getName();
-        String password = authentication.getCredentials().toString();
+        String pwd = authentication.getCredentials().toString();
+        String password = WorkoutService.toMD5(pwd);
         User user = null;
         for (Object user1 : workoutService.getAllUsers()){
         if (((User) user1).getName().equals(login) && ((User) user1).getPassword().equals(password)){

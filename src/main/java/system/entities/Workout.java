@@ -22,7 +22,7 @@ public class Workout {
     @Column(name = "price", nullable = false)
     private int price;
 
-    @Column(name = "description")
+    @Column(name = "description", nullable = false)
     private String description;
 
     @Column(name = "remain", nullable = false)

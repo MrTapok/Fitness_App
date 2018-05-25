@@ -1,0 +1,77 @@
+body {
+    padding-top: 54px;
+    background: #264FA4;
+}
+
+@media (min-width: 992px) {
+    body {
+        padding-top: 56px;
+    }
+}
+
+.bg-color {
+    background-color: #264FA4;
+}
+
+.bg-color3 {
+    background-color: rgba(38, 79, 164, 0.23);
+}
+
+.bg-color4 {
+    background-color: #83a3e2;
+}
+
+.borderless td, .borderless th {
+    border: none;
+}
+
+body{
+    font: 12px Arial, Helvetica, sans-serif;
+    color: #000000;
+    background: url(/resources/photos/bg.jpg);
+    line-height:20px;
+}
+
+header {
+    width:1100px;
+    padding: 0px 0px 0px 0px;
+    height: 390px;
+    background:url(/resources/photos/header.jpg) left top no-repeat;
+}
+
+#logo {
+    padding: 28px 0px 0px 0px;
+    height: 328px;
+    text-align: center
+}
+
+#logo H1
+{
+    font-family:Luminari, fantasy;
+    color:#000000;
+    font-size:40px;
+    font-style:italic;
+    text-decoration: none;
+    background: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+    font: 12px Arial, Helvetica, sans-serif;
+    color: #ffffff;
+}
+
+.form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+    font: 12px Arial, Helvetica, sans-serif;
+    color: #ffffff;
+}

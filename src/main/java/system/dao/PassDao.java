@@ -5,6 +5,7 @@ import system.entities.Pass;
 
 import java.util.List;
 
+@Repository
 public class PassDao extends GenericDao<Pass>
 {
     public List<Pass> getAllPass() {

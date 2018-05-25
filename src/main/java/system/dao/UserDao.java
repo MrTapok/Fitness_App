@@ -25,10 +25,6 @@ public class UserDao extends GenericDao<User>
         save(user);
     }
 
-    public void updateUser(User user){
-        update(user);
-    }
-
     public List<User> getUserByName(String name){
         return getList("from User where name=:n", name);
     }

@@ -40,7 +40,7 @@ public class WorkoutService
     }
 
     @Autowired
-    public void setTrainerDao(PassDao trainerDao) {
+    public void setPassDao(PassDao passDao) {
         this.passDao = passDao;
     }
 
@@ -97,6 +97,7 @@ public class WorkoutService
         return passes;
     }
 
+    @Secured("ROLE_MANAGER")
     public boolean addWorkout(Workout workout)  //check
     {
         List<Workout> workouts = workoutDao.getWorkoutByName(workout.getName());
@@ -104,6 +105,7 @@ public class WorkoutService
             Workout newWorkout = new Workout();
             newWorkout.setName(workout.getName());
             newWorkout.setPrice(workout.getPrice());
+            newWorkout.setDescription(workout.getDescription());
             newWorkout.setRemain(workout.getRemain());
             newWorkout.setType(workout.getType());
             workoutDao.saveWorkout(newWorkout);
@@ -112,6 +114,7 @@ public class WorkoutService
         return false;
     }
 
+    @Secured("ROLE_MANAGER")
     public boolean addPass(Pass pass) //check
     {
         List<Pass> passes = passDao.getPassByName(pass.getName());
@@ -119,6 +122,7 @@ public class WorkoutService
             Pass newPass = new Pass();
             newPass.setName(pass.getName());
             newPass.setPrice(pass.getPrice());
+            newPass.setDescription(pass.getDescription());
             newPass.setRemain(pass.getRemain());
             newPass.setType(pass.getType());
             passDao.savePass(newPass);
@@ -126,7 +130,6 @@ public class WorkoutService
         }
         return false;
     }
-
 
     public boolean addUser(User user)  //check
     {
@@ -146,6 +149,18 @@ public class WorkoutService
     {
         List<User> trainers = userDao.getUsersByRole("ROLE_TRAINER");
         return trainers;
+    }
+
+    public List getManagers()  //check
+    {
+        List<User> managers = userDao.getUsersByRole("ROLE_MANAGER");
+        return managers;
+    }
+
+    public List getAdmins()  //check
+    {
+        List<User> admins = userDao.getUsersByRole("ROLE_ADMIN");
+        return admins;
     }
 
     public List getAllUsers() {  //check

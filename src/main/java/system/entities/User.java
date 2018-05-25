@@ -55,8 +55,12 @@ public class User {
         return passes;
     }
 
-    public void setWorkouts(List<Workout> cart) {
-        this.workouts = cart;
+    public void setWorkouts(List<Workout>workouts) {
+        this.workouts = workouts;
+    }
+
+    public void setPasses(List<Pass>passes) {
+        this.passes = passes;
     }
 
     public int getVote() {
