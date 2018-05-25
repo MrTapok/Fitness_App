@@ -9,7 +9,7 @@ import java.util.Objects;
 import java.sql.Date;
 
 @Entity
-@Table(name = "workout", schema = "")
+@Table(name = "workout", schema = "sql7239701")
 public class Workout {
 
     @Id
@@ -28,7 +28,8 @@ public class Workout {
     @Column(name = "remain", nullable = false)
     private int remain;
 
-    //Колонка времени и дат
+    @Column(name = "status")
+    private String status;
 
     @ManyToOne
     @JoinColumn(name = "type_id", nullable = false)
@@ -39,6 +40,14 @@ public class Workout {
     @JoinColumn(name = "trainer_id", nullable = false)
     @JsonIgnore
     private User trainer;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String name) {
+        this.status = status;
+    }
 
     public int getId() {
         return id;

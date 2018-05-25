@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "pass", schema = "")
+@Table(name = "pass", schema = "sql7239701")
 public class Pass
 {
     @Id

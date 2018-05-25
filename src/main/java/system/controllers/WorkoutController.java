@@ -51,5 +51,8 @@ public class WorkoutController
         return "/admin.html";
     }
 
-    //work in progress
+    @RequestMapping(value = "/manager", method = RequestMethod.GET)
+    public String manager() {
+        return "/manager.html";
+    }
 }

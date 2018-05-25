@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "worktype", schema = "")
+@Table(name = "worktype", schema = "sql7239701")
 public class WorkoutType {
 
     @Id

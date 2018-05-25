@@ -46,57 +46,58 @@ public class WorkoutService
 
 
 
-    public void deleteUser(int id)
+    public void deleteUser(int id) //check
     {
         User user = userDao.getUser(id);
         userDao.deleteUser(user);
     }
 
-    public User getCurrentUser() {
+    public User getCurrentUser() {  //check
         User user = userDao.getUser(getUserName());
         return user;
     }
 
-    public String getUserName()
+    public String getUserName()  //check
     {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return auth.getName();
     }
 
-    @Secured("ROLE_USER")
+    @Secured("ROLE_USER")  //check
     public void addWorkoutToUser(int id) {
         User user = getCurrentUser();
+        Workout work = getWorkout(id);
         List<Workout> workouts = user.getWorkouts();
         workouts.add(getWorkout(id));
+        work.setRemain(work.getRemain() - 1);
         userDao.update(user);
+        workoutDao.update(work);
     }
 
-    @Secured("ROLE_USER")
+    @Secured("ROLE_USER")  //check
     public void addPassToUser(int id) {
         User user = getCurrentUser();
+        Pass ps = getPass(id);
         List<Pass> passes = user.getPasses();
         passes.add(getPass(id));
+        ps.setRemain(ps.getRemain() - 1);
         userDao.update(user);
+        passDao.update(ps);
     }
 
-    public void addTrainerToWorkout(int trainer_id, int workout_id)
-    {
-
-    }
-
-    public List<Workout> getWorkout() {
+    public List<Workout> getUserWorkout() {  //check
         User user = getCurrentUser();
         List<Workout> workouts = user.getWorkouts();
         return workouts;
     }
 
-    public List<Pass> getPass() {
+    public List<Pass> getUserPass() {  //check
         User user = getCurrentUser();
         List<Pass> passes = user.getPasses();
         return passes;
     }
 
-    public boolean addWorkout(Workout workout)
+    public boolean addWorkout(Workout workout)  //check
     {
         List<Workout> workouts = workoutDao.getWorkoutByName(workout.getName());
         if (!workout.getName().equals("") && workouts.isEmpty()) {
@@ -111,7 +112,7 @@ public class WorkoutService
         return false;
     }
 
-    public boolean addPass(Pass pass)
+    public boolean addPass(Pass pass) //check
     {
         List<Pass> passes = passDao.getPassByName(pass.getName());
         if (!pass.getName().equals("") && passes.isEmpty()) {
@@ -127,7 +128,7 @@ public class WorkoutService
     }
 
 
-    public boolean addUser(User user)
+    public boolean addUser(User user)  //check
     {
         List<User> users = userDao.getUserByName(user.getName());
         if (!user.getName().equals("") && !user.getPassword().equals("") && users.isEmpty()) {
@@ -141,18 +142,26 @@ public class WorkoutService
         return false;
     }
 
-    public List getTrainers()
+    public List getTrainers()  //check
     {
         List<User> trainers = userDao.getUsersByRole("ROLE_TRAINER");
         return trainers;
     }
 
-    public List getAllUsers() {
+    public List getAllUsers() {  //check
         return userDao.getAllUsers();
+    }  //check
+
+    public List getAllWorkouts() {  //check
+        return workoutDao.getAllWorkout();
     }
 
-    public List getAllWorkouts() {
-        return workoutDao.getAllWorkout();
+    public List getAllTypes() {  //check
+        return workouttypeDao.getAllTypes();
+    }
+
+    public List getAllPasses(){  //check
+        return passDao.getAllPass();
     }
 
     public Workout getWorkout(int id) {
@@ -161,14 +170,6 @@ public class WorkoutService
 
     public Pass getPass(int id) {
         return passDao.getPass(id);
-    }
-
-    public List getAllTypes() {
-        return workouttypeDao.getAllTypes();
-    }
-
-    public List getAllPasses(){
-        return passDao.getAllPass();
     }
 
     static public String toMD5(String md5) {
@@ -186,7 +187,7 @@ public class WorkoutService
     }
 
 
-    public void addAdmin(User user)
+    public void addAdmin(User user)  //check
     {
         if (user.getName()!=null && user.getPassword()!=null){
             user.setRole("ROLE_ADMIN");
@@ -195,7 +196,7 @@ public class WorkoutService
         }
     }
 
-    public void addManager(User user)
+    public void addManager(User user)  //check
     {
         if (user.getName()!=null && user.getPassword()!=null){
             user.setRole("ROLE_MANAGER");
@@ -204,7 +205,7 @@ public class WorkoutService
         }
     }
 
-    public void addTrainer(User user)
+    public void addTrainer(User user)  //check
     {
         if (user.getName()!=null && user.getPassword()!=null){
             user.setRole("ROLE_MANAGER");
